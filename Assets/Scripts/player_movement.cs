@@ -329,8 +329,8 @@ public class player_movement : MonoBehaviour
                         break;
                 }
 
-                newEnemy = Instantiate(enemy) as GameObject;
-                newEnemy.transform.position = new Vector3(transform.position.x + Random.Range(rngX, rngX / 2), 18, transform.position.z + Random.Range(rngZ, rngZ / 2));
+                // newEnemy = Instantiate(enemy) as GameObject;
+                // newEnemy.transform.position = new Vector3(transform.position.x + Random.Range(rngX, rngX / 2), 18, transform.position.z + Random.Range(rngZ, rngZ / 2));
             }
 
             timer = 0.0f;
