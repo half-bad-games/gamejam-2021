@@ -62,7 +62,7 @@ public class player_movement : MonoBehaviour
         timer = 0.0f;
         spawnRate = 2;
 
-        timer_script = GameObject.Find("Timer").GetComponent<Timer_Script>();
+        // timer_script = GameObject.Find("Timer").GetComponent<Timer_Script>();
     }
 
     // Update is called once per frame
@@ -352,10 +352,10 @@ public class player_movement : MonoBehaviour
         if (health <= 0)
         {
             SceneManager.LoadScene("GameOverScene", LoadSceneMode.Single);
-            timer_script.setMinuteCountSaved(timer_script.getMinuteCount());
-            timer_script.setSecoundCountSaved(timer_script.getSecoundCount());
-            timer_script.setMinuteCount(0);
-            timer_script.setSecoundCount(0.0f);
+            // timer_script.setMinuteCountSaved(timer_script.getMinuteCount());
+            // timer_script.setSecoundCountSaved(timer_script.getSecoundCount());
+            // timer_script.setMinuteCount(0);
+            // timer_script.setSecoundCount(0.0f);
         }
 
     }
