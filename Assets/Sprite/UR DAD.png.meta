@@ -1,0 +1,295 @@
+fileFormatVersion: 2
+guid: d1d3592561a282742a9b5279cc140bc0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6430771224998730348
+    second: UR DAD_0
+  - first:
+      213: 7716395331928659214
+    second: UR DAD_1
+  - first:
+      213: -1474642420996827142
+    second: UR DAD_2
+  - first:
+      213: 3246355164148182670
+    second: UR DAD_3
+  - first:
+      213: 5364917080844272046
+    second: UR DAD_4
+  - first:
+      213: -5929049989693573108
+    second: UR DAD_5
+  - first:
+      213: 7717219911005687106
+    second: UR DAD_6
+  - first:
+      213: -7538344628902377854
+    second: UR DAD_7
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UR DAD_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 656
+        width: 405
+        height: 217
+      alignment: 9
+      pivot: {x: 0.44008473, y: 0.37640494}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0b4edea75d487241a6a03d201e0d333
+      internalID: -6430771224998730348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UR DAD_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 50
+        width: 326
+        height: 471
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d4bacc523f72f649b47550e321b9480
+      internalID: 7716395331928659214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UR DAD_2
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 289
+        width: 210
+        height: 167
+      alignment: 9
+      pivot: {x: 0.8588152, y: 0.8517864}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a516c64e69503684a848c87e868c71d7
+      internalID: -1474642420996827142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UR DAD_3
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 262
+        width: 208
+        height: 210
+      alignment: 9
+      pivot: {x: 0.13773434, y: 0.8405699}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 947259cb98b05cd409de0b1a9b16cf8e
+      internalID: 3246355164148182670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UR DAD_4
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 18
+        width: 142
+        height: 266
+      alignment: 9
+      pivot: {x: 0.6978665, y: 0.9273132}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 026f7a9eb7109a64a825e5078be3b543
+      internalID: 5364917080844272046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UR DAD_5
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 24
+        width: 152
+        height: 265
+      alignment: 9
+      pivot: {x: 0.39077115, y: 0.9048288}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb72e1df63e2de64a8ea50ee1ecc0c4c
+      internalID: -5929049989693573108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UR DAD_6
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 176
+        width: 74
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e8ad817e937e448bf3529f2dc9fccd
+      internalID: 7717219911005687106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UR DAD_7
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 169
+        width: 40
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddcb04a9195eff147a81bff7d310b6ba
+      internalID: -7538344628902377854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 418d6cadab37ad548860a79240cdd267
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

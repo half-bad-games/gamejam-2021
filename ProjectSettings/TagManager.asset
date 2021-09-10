@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - tag_bullet
+  - timer
+  - enemy
+  - tree
   layers:
   - Default
   - TransparentFX
