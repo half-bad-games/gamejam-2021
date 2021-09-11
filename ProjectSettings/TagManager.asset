@@ -44,25 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
   - name: GameObjects
     uniqueID: 682985211
-=======
-=======
-<<<<<<< HEAD
->>>>>>> Stashed changes
-  - name: Backround
-    uniqueID: 1866363467
-    locked: 0
-  - name: Foreground
-    uniqueID: 1947701103
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
-=======
-  - name: GameObjects
-    uniqueID: 682985211
->>>>>>> e8827f38e5f9c733f83f8c293a66b467b411afe2
->>>>>>> Stashed changes
     locked: 0
