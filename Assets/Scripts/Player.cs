@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var p = new PlayerAdapterComponent(this);
-        var comp = new DecoratorFactory(p).generate(10);
+        var p = new GameObjectAdapterComponent(this.name);
+        var comp = new DecoratorFactory(p, this).generate(10);
         stats = comp.extend();
         health = stats.health;
     }
