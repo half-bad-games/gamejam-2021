@@ -6,9 +6,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] public float movementSpeed;
     [SerializeField] public float health;
-    private Ray ray;
-    private RaycastHit hit;
-    Stats stats;
+    private Stats stats;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +21,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         // GameObject.Find("HEALTH").GetComponent<UnityEngine.UI.Text>().text = ((int)health).ToString();
-
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out hit))
-        {
-            Debug.Log(hit.collider.name);
-        }
         HandlePlayerMovement();
     }
 
