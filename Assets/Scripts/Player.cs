@@ -4,16 +4,19 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Player : MonoBehaviour
 {
-    
     [SerializeField] public float movementSpeed;
     [SerializeField] public float health;
     private Ray ray;
     private RaycastHit hit;
+    Stats stats;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        var p = new PlayerAdapterComponent(this);
+        var comp = new DecoratorFactory(p).generate(10);
+        stats = comp.extend();
+        health = stats.health;
     }
 
     // Update is called once per frame
