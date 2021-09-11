@@ -3,154 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-struct Stats
-{
-    public int speed;
-    public int damage;
-    public int health;
-    public int agility;
-}
-
-interface Component
-{
-    Stats extend();
-}
-
-class PlayerComponent : Component
-{
-    Stats stats;
-
-    public PlayerComponent(Stats stats)
-    {
-        this.stats = stats;
-    }
-
-    public Stats extend()
-    {
-        return this.stats;
-    }
-}
-
-abstract class Decorator : Component
-{
-    Component component;
-    protected Stats stats;
-
-    protected Decorator() { }
-
-    protected Decorator(Component component)
-    {
-        this.setComponent(component);
-    }
-
-    public void setComponent(Component component)
-    {
-        this.component = component;
-    }
-
-    public Stats extend()
-    {
-        this.stats = this.component.extend();
-        return this.add();
-    }
-
-    public abstract Stats add();
-}
-
-class Spear : Decorator
-{
-    public Spear() { }
-
-    public Spear(Component component) : base(component) { }
-
-    public override Stats add()
-    {
-        this.stats.damage += 10;
-        return this.stats;
-    }
-}
-
-class Fin : Decorator
-{
-    public Fin() { }
-
-    public Fin(Component component) : base(component) { }
-
-    public override Stats add()
-    {
-        this.stats.agility += 10;
-        return this.stats;
-    }
-}
-
-class Scale : Decorator
-{
-    public Scale() { }
-
-    public Scale(Component component) : base(component) { }
-
-    public override Stats add()
-    {
-        this.stats.health += 10;
-        return this.stats;
-    }
-}
-
-class Paddles : Decorator
-{
-    public Paddles() { }
-
-    public Paddles(Component component) : base(component) { }
-
-    public override Stats add()
-    {
-        this.stats.speed += 10;
-        return this.stats;
-    }
-}
-
-class DecoratorFactory
-{
-    Component component;
-    List<Decorator> decorators;
-
-    public DecoratorFactory(Component component)
-    {
-        this.component = component;
-        
-        this.decorators = new List<Decorator>();
-
-        decorators.Add(new Spear());
-        decorators.Add(new Fin());
-        decorators.Add(new Paddles());
-        decorators.Add(new Scale());
-    }
-
-    // Generate a composition of random of Decorators
-    public Decorator generate(int n)
-    {
-        Decorator dec = null;
-
-        for (var i = 0; i < n; i++)
-        {
-            var lastDec = dec;
-            dec = System.Activator.CreateInstance(decorators[Random.Range(0, this.decorators.Count)].GetType()) as Decorator;
-
-            if (i == 0)
-            {
-                dec.setComponent(this.component);
-            }
-            else
-            {
-                dec.setComponent(lastDec);
-            }
-        }
-
-        return dec;
-    }
-}
-
 public class player_movement : MonoBehaviour
 {
     // Bullet variables
@@ -188,6 +40,8 @@ public class player_movement : MonoBehaviour
 
     public Timer_Script timer_script;
 
+    Stats stats;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -212,27 +66,39 @@ public class player_movement : MonoBehaviour
 
         // timer_script = GameObject.Find("Timer").GetComponent<Timer_Script>();
 
-        for (var i = 0; i < 200; i++)
-        {
-            var p = new PlayerComponent(new Stats());
-            var comp = new DecoratorFactory(p).generate(10);
-            var stats = comp.extend();
+        var p = new PlayerAdapterComponent(this);
+        var comp = new DecoratorFactory(p).generate(10);
+        stats = comp.extend();
+        health = stats.health;
+        
+        // Debug.Log("Stats 1");
+        // Debug.Log(stats.speed);
+        // Debug.Log(stats.health);
+        // Debug.Log(stats.damage);
+        // Debug.Log(stats.agility);
+        // Debug.Log("");
+
+        // for (var i = 0; i < 200; i++)
+        // {
+        //     var p = new PlayerAdapterComponent(this);
+        //     var comp = new DecoratorFactory(p).generate(10);
+        //     var stats = comp.extend();
             
-            Debug.Log("Stats " + i);
-            Debug.Log(stats.speed);
-            Debug.Log(stats.health);
-            Debug.Log(stats.damage);
-            Debug.Log(stats.agility);
-            Debug.Log("");
-        }
+        //     Debug.Log("Stats " + i);
+        //     Debug.Log(stats.speed);
+        //     Debug.Log(stats.health);
+        //     Debug.Log(stats.damage);
+        //     Debug.Log(stats.agility);
+        //     Debug.Log("");
+        // }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         // ############### Player Movement ###############
-           float h = Input.GetAxis("Horizontal");
-           float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
 
         
         hspeed = walking_speed * h + knockBack_hspeed;
@@ -409,8 +275,8 @@ public class player_movement : MonoBehaviour
         }
         // ############### Player Sprint ###############
 
-        if (health > 100)
-            health = 100;
+        // if (health > 100)
+        //     health = 100;
 
         // ############### Player PLANT ###############
         if ((Input.GetKey(KeyCode.Space)) || (Input.GetKey(KeyCode.LeftControl)) || (Input.GetKey(KeyCode.RightControl)))
