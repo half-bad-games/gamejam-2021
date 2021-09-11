@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // GameObject.Find("HEALTH").GetComponent<UnityEngine.UI.Text>().text = ((int)health).ToString();
+
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out hit))
         {
