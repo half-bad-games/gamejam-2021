@@ -9,6 +9,7 @@ struct Stats
     public int damage;
     public float health;
     public int agility;
+    public int vision;
 }
 
 interface Component
@@ -108,41 +109,106 @@ class SpearDecorator : Decorator
     }
 }
 
-class FinDecorator : Decorator
+class FishTailDecorator : Decorator
 {
-    public FinDecorator() { }
+    public FishTailDecorator() { }
 
-    public FinDecorator(Component component) : base(component) { }
+    public FishTailDecorator(Component component) : base(component) { }
 
     public override Stats add()
     {
-        this.stats.agility += 10;
+        this.stats.speed += 20;
         return this.stats;
     }
 }
 
-class ScaleDecorator : Decorator
+class TapedSwordDecorator : Decorator
 {
-    public ScaleDecorator() { }
+    public TapedSwordDecorator() { }
 
-    public ScaleDecorator(Component component) : base(component) { }
+    public TapedSwordDecorator(Component component) : base(component) { }
 
     public override Stats add()
     {
-        this.stats.health += 10;
+        this.stats.damage += 20;
         return this.stats;
     }
 }
 
-class PaddlesDecorator : Decorator
+class LightSaberDecorator : Decorator
 {
-    public PaddlesDecorator() { }
+    public LightSaberDecorator() { }
 
-    public PaddlesDecorator(Component component) : base(component) { }
+    public LightSaberDecorator(Component component) : base(component) { }
+
+    public override Stats add()
+    {
+        this.stats.damage += 100;
+        return this.stats;
+    }
+}
+
+class EyesDecorator : Decorator
+{
+    public EyesDecorator() { }
+
+    public EyesDecorator(Component component) : base(component) { }
+
+    public override Stats add()
+    {
+        this.stats.vision += 5;
+        return this.stats;
+    }
+}
+
+class WhiskersDecorator : Decorator
+{
+    public WhiskersDecorator() { }
+
+    public WhiskersDecorator(Component component) : base(component) { }
+
+    public override Stats add()
+    {
+        this.stats.agility += 5;
+        return this.stats;
+    }
+}
+
+class ThirdEyeDecorator : Decorator
+{
+    public ThirdEyeDecorator() { }
+
+    public ThirdEyeDecorator(Component component) : base(component) { }
+
+    public override Stats add()
+    {
+        this.stats.vision += 10;
+        return this.stats;
+    }
+}
+
+class SlimeDecorator : Decorator
+{
+    public SlimeDecorator() { }
+
+    public SlimeDecorator(Component component) : base(component) { }
 
     public override Stats add()
     {
         this.stats.speed += 10;
+        return this.stats;
+    }
+}
+
+class ForceFieldDecorator : Decorator
+{
+    public ForceFieldDecorator() { }
+
+    public ForceFieldDecorator(Component component) : base(component) { }
+
+    public override Stats add()
+    {
+        this.stats.health += 100;
         return this.stats;
     }
 }
@@ -161,9 +227,14 @@ class DecoratorFactory
         this.decorators = new List<Decorator>();
 
         decorators.Add(new SpearDecorator());
-        decorators.Add(new FinDecorator());
-        decorators.Add(new PaddlesDecorator());
-        decorators.Add(new ScaleDecorator());
+        decorators.Add(new FishTailDecorator());
+        decorators.Add(new TapedSwordDecorator());
+        decorators.Add(new LightSaberDecorator());
+        decorators.Add(new EyesDecorator());
+        decorators.Add(new WhiskersDecorator());
+        decorators.Add(new ThirdEyeDecorator());
+        decorators.Add(new SlimeDecorator());
+        decorators.Add(new ForceFieldDecorator());
     }
 
     // Generate a composition of random of Decorators
