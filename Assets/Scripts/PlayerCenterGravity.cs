@@ -7,16 +7,15 @@ using Random = UnityEngine.Random;
 public class PlayerCenterGravity : MonoBehaviour
 {
     private bool isPlayer;
-    private float thrust = 100;
-    private float torque = 100;
+    private float thrust = 500;
+    private float torque = 500;
+    public GameObject player;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        var obj = GameObject.Find("Player");
-
-        if (obj != null && (gameObject.GetInstanceID() != obj.gameObject.GetInstanceID()))
+        if (gameObject.GetInstanceID() != player.gameObject.GetInstanceID())
         {
             isPlayer = false;
             Vector2 thrust = new Vector2(Random.Range(-this.thrust, this.thrust), Random.Range(-this.thrust, this.thrust));

@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     {
         // GameObject.Find("HEALTH").GetComponent<UnityEngine.UI.Text>().text = ((int)health).ToString();
         HandlePlayerMovement();
-        HandleStayInsideScreen();
+        // HandleStayInsideScreen();
         if (Input.GetKey("space"))
         {
             IncreaseSize(1);

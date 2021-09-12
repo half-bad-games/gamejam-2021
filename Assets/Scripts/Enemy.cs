@@ -7,8 +7,6 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public float movementSpeed;
-    [SerializeField] public GameObject gameArea;
     [SerializeField] public int size;
     [SerializeField] public float health;
     [SerializeField] public int xpGains;
@@ -23,7 +21,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleStayInsideScreen();
+        // wwHandleStayInsideScreen();
     }
     
 
