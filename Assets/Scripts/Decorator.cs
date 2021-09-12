@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-struct Stats
+public struct Stats
 {
     public int speed;
     public int damage;

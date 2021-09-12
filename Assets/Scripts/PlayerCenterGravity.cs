@@ -7,16 +7,15 @@ using Random = UnityEngine.Random;
 public class PlayerCenterGravity : MonoBehaviour
 {
     private bool isPlayer;
-    private float thrust = 100;
-    private float torque = 100;
+    private float thrust = 500;
+    private float torque = 500;
+    public GameObject player;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        var obj = GameObject.Find("Player");
-
-        if (obj != null && (gameObject.GetInstanceID() != obj.gameObject.GetInstanceID()))
+        if (gameObject.GetInstanceID() != player.gameObject.GetInstanceID())
         {
             isPlayer = false;
             Vector2 thrust = new Vector2(Random.Range(-this.thrust, this.thrust), Random.Range(-this.thrust, this.thrust));
@@ -53,23 +52,19 @@ public class PlayerCenterGravity : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("AM TRIGGERING");
-        Player player;
-        Enemy enemy;
-        if (isPlayer)
-        {
-            player = gameObject.GetComponent<Player>();
-            enemy = other.gameObject.GetComponent<Enemy>();
-
-            if ((player != null && enemy != null) && (player.size > enemy.size))
-            {
-                player.IncreaseCurrentXP(enemy.xpGains);
-                Destroy(other.gameObject);
-            }
-        }
-        else
-        {
-            
-        }
+        // Debug.Log("AM TRIGGERING");
+        // Player player;
+        // Enemy enemy;
+        // if (isPlayer)
+        // {
+        //     player = gameObject.GetComponent<Player>();
+        //     enemy = other.gameObject.GetComponent<Enemy>();
+        //
+        //     if ((player != null && enemy != null) && (player.size > enemy.size))
+        //     {
+        //         player.IncreaseCurrentXP(enemy.xpGains);
+        //         Destroy(other.gameObject);
+        //     }
+        // }
     }
 }

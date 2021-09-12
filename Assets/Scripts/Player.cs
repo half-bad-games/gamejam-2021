@@ -13,11 +13,14 @@ public class Player : MonoBehaviour
     [SerializeField] public int currentSP;
     private Stats stats;
     private float t = 0;
+    private int growth = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.name = this.GetInstanceID().ToString();
+        var name = this.GetInstanceID().ToString();
+        camera.GetComponent<CameraFollow>().playerId = name;
+        this.name = name;
         var p = new GameObjectAdapterComponent(this.name, this.GetType());
         var comp = new DecoratorFactory(p, this).generate(10);
         stats = comp.extend();
@@ -29,13 +32,9 @@ public class Player : MonoBehaviour
     {
         // GameObject.Find("HEALTH").GetComponent<UnityEngine.UI.Text>().text = ((int)health).ToString();
         HandlePlayerMovement();
-        HandleStayInsideScreen();
-        if (Input.GetKey("space"))
-        {
-            IncreaseSize(1);
-        }
+        // HandleStayInsideScreen();
 
-        if (camera.orthographicSize < size)
+        if (camera.orthographicSize < size * 4)
         {
             IncreaseCameraSize(camera.orthographicSize);
         }
@@ -84,12 +83,13 @@ public class Player : MonoBehaviour
     private void IncreaseCameraSize(float camSize)
     {
         t += Time.deltaTime;
-        camera.orthographicSize = camSize * 3;
+        camera.orthographicSize = camSize * 5;
     }
 
     private void IncreaseXPToleven()
     {
-        currentXPToLevel *= (int) 1.2f;
+        Debug.Log("WTF");
+        currentXPToLevel *= (int) 1.2;
     }
 
     public void IncreaseCurrentXP(int xpGains)
@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
         while (currentXP >= currentXPToLevel)
         {
             IncreaseXPToleven();
-            IncreaseSize(1);
+            IncreaseSize();
             currentXP = currentXP - currentXPToLevel;
             IncreaseSP();
         }
@@ -118,11 +118,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void IncreaseSize(int amount)
+    private void IncreaseSize()
     {
+        int amount = 3;
         Vector3 local = transform.localScale;
         transform.localScale = new Vector3(local.x + 0.2f * amount,local.y + 0.2f * amount,local.z + 0.2f * amount);
-        size += amount;
+        size++;
+        growth++;
     }
     
 }

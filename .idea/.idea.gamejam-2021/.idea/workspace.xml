@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92924e3f-33df-4934-9265-b783cf2a1787" name="Changes" comment="asdf">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game2.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game2.unity.meta" beforeDir="false" />
+    <list default="true" id="92924e3f-33df-4934-9265-b783cf2a1787" name="Changes" comment="fix spawn sizes of enemies">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.gamejam-2021/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.gamejam-2021/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefab/LightSaber.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefab/LightSaber.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefab/Spear.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefab/Spear.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefab/TapedSword.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefab/TapedSword.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Decorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Decorator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerCenterGravity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerCenterGravity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +35,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/jvd/UnityProjects/gamejam-2021/Assets/Scripts/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jvd/UnityProjects/gamejam-2021/Assets/Scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.5.2/Runtime/VisualScripting.Core/Ensure/EnsureThat.Objects.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1d2504b6a0424962b2d516ac67b188fc1b800/0f/6c8cf68d/Collider2D.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1xy67rirzeHEWse0eS4M8Lc8FaK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -188,7 +199,35 @@
       <option name="project" value="LOCAL" />
       <updated>1631448339042</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="cropped images">
+      <created>1631452450796</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1631452450796</updated>
+    </task>
+    <task id="LOCAL-00018" summary="spear commit">
+      <created>1631455668445</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1631455668445</updated>
+    </task>
+    <task id="LOCAL-00019" summary="added camera follow. Spawn enemies off screen. Fixed collider on player and enemies">
+      <created>1631459413720</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1631459413720</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fix spawn sizes of enemies">
+      <created>1631462033221</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1631462033221</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,6 +263,10 @@
     <MESSAGE value="made basic progression logic work" />
     <MESSAGE value="commiting new scene" />
     <MESSAGE value="asdf" />
-    <option name="LAST_COMMIT_MESSAGE" value="asdf" />
+    <MESSAGE value="cropped images" />
+    <MESSAGE value="spear commit" />
+    <MESSAGE value="added camera follow. Spawn enemies off screen. Fixed collider on player and enemies" />
+    <MESSAGE value="fix spawn sizes of enemies" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix spawn sizes of enemies" />
   </component>
 </project>
