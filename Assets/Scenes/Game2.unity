@@ -155,13 +155,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828a0522dcba045ff9a634ebc7d9d88c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 519420031}
+  camera: {fileID: 0}
   movementSpeed: 100
   health: 1
   size: 0
-  currentXPToLevel: 100
+  currentXPToLevel: 0
   currentXP: 0
-  currentSP: 1
+  currentSP: 0
 --- !u!212 &35613882
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -765,9 +765,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 3
-  player: {fileID: 35613880}
   spawnObject: {fileID: 1480027131}
-  gameArea: {fileID: 972896850}
+  camera: {fileID: 519420031}
+  mapX: 300
+  mapY: 300
 --- !u!4 &2040654448
 Transform:
   m_ObjectHideFlags: 0

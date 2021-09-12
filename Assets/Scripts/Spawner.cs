@@ -5,7 +5,6 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] public float spawnRate;
-    [SerializeField] public GameObject player;
     [SerializeField] public GameObject spawnObject;
     [SerializeField] public Camera camera;
     [SerializeField] public float mapX;
@@ -51,8 +50,6 @@ public class Spawner : MonoBehaviour
             var stats = comp.extend();
             baseComponent.health = stats.health;
 
-            spawnedObject.transform.SetParent(this.gameArea.transform, false);
-        
             yield return new WaitForSeconds(spawnRate);
         }
     }
