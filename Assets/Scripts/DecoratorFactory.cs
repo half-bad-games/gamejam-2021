@@ -35,7 +35,9 @@ class DecoratorFactory
         for (var i = 0; i < n + 1; i++)
         {
             var lastDec = dec;
-            dec = System.Activator.CreateInstance(decorators[Random.Range(0, this.decorators.Count)].GetType()) as Decorator;
+            dec = System.Activator.CreateInstance(
+                decorators[Random.Range(0, this.decorators.Count)].GetType()
+            ) as Decorator;
 
             if (i == 0)
             {

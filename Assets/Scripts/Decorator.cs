@@ -23,13 +23,13 @@ class GameObjectAdapterComponent : Component
 
     dynamic baseComponent;
 
-    public GameObjectAdapterComponent(string name)
+    public GameObjectAdapterComponent(string name, System.Type type)
     {
-        var obj = GameObject.Find(name);
+        var gameObj = GameObject.Find(name);
 
-        if (obj)
+        if (gameObj)
         {
-            baseComponent = obj.GetComponent(System.Type.GetType(name));
+            baseComponent = gameObj.GetComponent(type);
 
             this.stats = new Stats();
             this.stats.health = baseComponent.health;
@@ -80,7 +80,7 @@ abstract class Decorator : Component
             if (this.baseComponent != null)
             {
                 var clone = GameObject.Instantiate(obj);
-                clone.transform.SetParent(this.baseComponent.transform);
+                clone.transform.SetParent(this.baseComponent.transform, false);
             }
         }
     }
