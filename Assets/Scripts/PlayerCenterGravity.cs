@@ -14,7 +14,9 @@ public class PlayerCenterGravity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.GetInstanceID() != GameObject.Find("PlayerContainer").gameObject.GetInstanceID())
+        var obj = GameObject.Find("Player");
+
+        if (obj != null && (gameObject.GetInstanceID() != obj.gameObject.GetInstanceID()))
         {
             isPlayer = false;
             Vector2 thrust = new Vector2(Random.Range(-this.thrust, this.thrust), Random.Range(-this.thrust, this.thrust));
@@ -58,8 +60,8 @@ public class PlayerCenterGravity : MonoBehaviour
         {
             player = gameObject.GetComponent<Player>();
             enemy = other.gameObject.GetComponent<Enemy>();
-            Debug.Log("player" + player + " enemy " + enemy);
-            if (player.size > enemy.size)
+
+            if ((player != null && enemy != null) && (player.size > enemy.size))
             {
                 player.IncreaseCurrentXP(enemy.xpGains);
                 Destroy(other.gameObject);
