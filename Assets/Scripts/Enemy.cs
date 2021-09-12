@@ -58,11 +58,13 @@ public class Enemy : MonoBehaviour
             bottomLeft.x,
             bottomLeft.y,
             topRight.x - bottomLeft.x,
-            topRight.y - bottomLeft.y);
+            topRight.y - bottomLeft.y
+        );
         
         transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, cameraRect .xMin + 3, cameraRect .xMax - 3),
-            Mathf.Clamp(transform.position.y, cameraRect .yMin + 3, cameraRect .yMax - 3),
-            transform.position.z);
+            Mathf.Clamp(transform.position.x, cameraRect .xMin + 3, cameraRect.xMax - 3),
+            Mathf.Clamp(transform.position.y, cameraRect .yMin + 3, cameraRect.yMax - 3),
+            transform.position.z
+        );
     }
 }

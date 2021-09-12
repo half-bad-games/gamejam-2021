@@ -7,7 +7,9 @@ public class Spawner : MonoBehaviour
     [SerializeField] public float spawnRate;
     [SerializeField] public GameObject player;
     [SerializeField] public GameObject spawnObject;
-    [SerializeField] public GameObject gameArea;
+    [SerializeField] public Camera camera;
+    [SerializeField] public float mapX;
+    [SerializeField] public float mapY;
     
     // Start is called before the first frame update
     void Start()
@@ -25,14 +27,31 @@ public class Spawner : MonoBehaviour
     {
         while (true)
         {
-            MeshCollider mesh = gameArea.GetComponent<MeshCollider>();
-            float screenX, screenY;
-            screenX = Random.Range(mesh.bounds.min.x, mesh.bounds.max.x);
-            screenY = Random.Range(mesh.bounds.min.y, mesh.bounds.max.y);
+            var vertExtent = camera.orthographicSize;
+            var horzExtent = vertExtent * Screen.width / Screen.height;
+    
+            var xMin = horzExtent - mapX / 2.0f;
+            var xMax = mapX / 2.0f - horzExtent;
+            var yMin = vertExtent - mapY / 2.0f;
+            var yMax = mapY / 2.0f - vertExtent;
+
+            var screenX = Random.Range(xMin, xMax);
+            var screenY = Random.Range(yMin, yMax);
             Vector2 pos = new Vector2(screenX, screenY);
 
             GameObject spawnedObject = Instantiate(spawnObject, pos, Quaternion.identity);
-            spawnedObject.transform.parent = gameArea.transform;
+            spawnedObject.name = spawnedObject.GetInstanceID().ToString();
+            dynamic spawnedObjectBaseComponent = spawnedObject.GetComponent(
+                System.Type.GetType(spawnObject.name)
+            );
+
+            var p = new GameObjectAdapterComponent(spawnedObject.name, spawnedObjectBaseComponent.GetType());
+            dynamic baseComponent = spawnedObject.GetComponent(System.Type.GetType(spawnObject.name));
+            var comp = new DecoratorFactory(p, baseComponent).generate(10);
+            var stats = comp.extend();
+            baseComponent.health = stats.health;
+
+            spawnedObject.transform.SetParent(this.gameArea.transform, false);
         
             yield return new WaitForSeconds(spawnRate);
         }

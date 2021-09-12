@@ -17,11 +17,11 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var p = new GameObjectAdapterComponent(this.name);
+        this.name = this.GetInstanceID().ToString();
+        var p = new GameObjectAdapterComponent(this.name, this.GetType());
         var comp = new DecoratorFactory(p, this).generate(10);
         stats = comp.extend();
         health = stats.health;
-        
     }
 
     // Update is called once per frame
