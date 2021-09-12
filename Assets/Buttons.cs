@@ -32,5 +32,11 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
+    public void Backtogame()
+    {
+        SceneManager.LoadScene("Game");
+    }
 
+
+  
 }
