@@ -132,21 +132,8 @@ public class Player : MonoBehaviour
     void IncreaseSize(int amount)
     {
         Vector3 local = transform.localScale;
-        //sets the local scale of an object
         transform.localScale = new Vector3(local.x + 0.2f * amount,local.y + 0.2f * amount,local.z + 0.2f * amount);
         size += amount;
-        // if (movementSpeed <= 50 && movementSpeed > 1)
-        // {
-        //     movementSpeed -= amount * 0.2f;
-        // } 
-        // else if (movementSpeed <= 0)
-        // {
-        //     movementSpeed = 0.2f;
-        // }
-        // else
-        // {
-        //     movementSpeed -= amount;
-        // }
     }
     
 }
