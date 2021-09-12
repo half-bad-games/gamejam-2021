@@ -62,18 +62,6 @@ public class Player : MonoBehaviour
         }
 
         transform.position = pos;
-        
-        var modelPosition = transform.position;
-        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        var delta_x = modelPosition.x - mousePosition.x;
-        var delta_y = modelPosition.y - mousePosition.y;
-
-        var delta_x_norm = delta_x / (Mathf.Sqrt(delta_x * delta_x + delta_y * delta_y));
-        var delta_y_norm = delta_y / (Mathf.Sqrt(delta_x * delta_x + delta_y * delta_y));
-        var player_angle = (Mathf.Atan2(delta_y_norm, delta_x_norm) * (Mathf.Rad2Deg));
-        
-        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, player_angle + 90));
     }
     
     void HandleStayInsideScreen()
@@ -96,31 +84,32 @@ public class Player : MonoBehaviour
     private void IncreaseCameraSize(float camSize)
     {
         t += Time.deltaTime;
-        camera.orthographicSize = camSize * 5;
+        camera.orthographicSize = camSize * 3;
     }
 
-    void IncreaseXPToleven()
+    private void IncreaseXPToleven()
     {
         currentXPToLevel *= (int) 1.2f;
     }
 
-    void IncreaseCurrentXP(int xpGains)
+    public void IncreaseCurrentXP(int xpGains)
     {
         currentXP += xpGains;
-        if (currentXP >= currentXPToLevel)
+        while (currentXP >= currentXPToLevel)
         {
             IncreaseXPToleven();
+            IncreaseSize(1);
             currentXP = currentXP - currentXPToLevel;
             IncreaseSP();
         }
     }
 
-    void IncreaseSP()
+    private void IncreaseSP()
     {
         currentSP += 1;
     }
 
-    void DecreaseSP(int amount)
+    public void DecreaseSP(int amount)
     {
         currentSP -= amount;
         if (currentSP > 0)
@@ -129,7 +118,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void IncreaseSize(int amount)
+    private void IncreaseSize(int amount)
     {
         Vector3 local = transform.localScale;
         transform.localScale = new Vector3(local.x + 0.2f * amount,local.y + 0.2f * amount,local.z + 0.2f * amount);
