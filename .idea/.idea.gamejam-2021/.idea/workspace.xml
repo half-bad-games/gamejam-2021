@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92924e3f-33df-4934-9265-b783cf2a1787" name="Changes" comment="scene" />
+    <list default="true" id="92924e3f-33df-4934-9265-b783cf2a1787" name="Changes" comment="asdf" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +10,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="AdvancedPlayerAndEnemyLogic" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -228,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631467071761</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="asdf">
+      <created>1631467265371</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1631467265371</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,12 +270,12 @@
     <MESSAGE value="sadad" />
     <MESSAGE value="made basic progression logic work" />
     <MESSAGE value="commiting new scene" />
-    <MESSAGE value="asdf" />
     <MESSAGE value="cropped images" />
     <MESSAGE value="spear commit" />
     <MESSAGE value="added camera follow. Spawn enemies off screen. Fixed collider on player and enemies" />
     <MESSAGE value="fix spawn sizes of enemies" />
     <MESSAGE value="scene" />
-    <option name="LAST_COMMIT_MESSAGE" value="scene" />
+    <MESSAGE value="asdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="asdf" />
   </component>
 </project>
