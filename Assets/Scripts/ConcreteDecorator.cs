@@ -119,3 +119,43 @@ class ForceFieldDecorator : Decorator
         return this.stats;
     }
 }
+
+class BasicFinsDecorator : Decorator
+{
+    public BasicFinsDecorator() { }
+
+    public BasicFinsDecorator(Component component) : base(component) { }
+
+    public override Stats add()
+    {
+        this.stats.speed += 5;
+        return this.stats;
+    }
+}
+
+class MouthDecorator : Decorator
+{
+    public MouthDecorator() { }
+
+    public MouthDecorator(Component component) : base(component) { }
+
+    public override Stats add()
+    {
+        this.stats.damage += 5;
+        return this.stats;
+    }
+}
+
+class SpikesDecorator : Decorator
+{
+    public SpikesDecorator() { }
+
+    public SpikesDecorator(Component component) : base(component) { }
+
+    public override Stats add()
+    {
+        this.stats.damage += 5;
+        this.stats.health += 10;
+        return this.stats;
+    }
+}

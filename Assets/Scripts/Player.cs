@@ -11,9 +11,13 @@ public class Player : MonoBehaviour
     [SerializeField] public int currentXPToLevel;
     [SerializeField] public int currentXP;
     [SerializeField] public int currentSP;
+    // private dynamic buyMenu;
+    [SerializeField] public GameObject buyMenu;
+    private bool buyMenuLock;
     private Stats stats;
     private float t = 0;
     private int growth = 0;
+    private GameObjectAdapterComponent adapterComponent;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +25,14 @@ public class Player : MonoBehaviour
         var name = this.GetInstanceID().ToString();
         camera.GetComponent<CameraFollow>().playerId = name;
         this.name = name;
-        var p = new GameObjectAdapterComponent(this.name, this.GetType());
-        var comp = new DecoratorFactory(p, this).generate(10);
-        stats = comp.extend();
-        health = stats.health;
+        // var p = new GameObjectAdapterComponent(this.name, this.GetType());
+        // var comp = new DecoratorFactory(p, this).generate(10);
+        // stats = comp.extend();
+        // health = stats.health;
+        this.buyMenuLock = false;
+
+        this.name = this.GetInstanceID().ToString();
+        this.adapterComponent = new GameObjectAdapterComponent(this.name, this.GetType());
     }
 
     // Update is called once per frame
@@ -38,6 +46,8 @@ public class Player : MonoBehaviour
         {
             IncreaseCameraSize(camera.orthographicSize);
         }
+
+        HandleBuyMenu();
     }
 
     void HandlePlayerMovement()
@@ -61,6 +71,77 @@ public class Player : MonoBehaviour
         }
 
         transform.position = pos;
+    }
+
+    System.Collections.IEnumerator SetBuyMenuLock()
+    {
+        yield return new WaitForSeconds(0.1f);
+        
+        this.buyMenuLock = false;
+    }
+
+    public void Item0()
+    {
+        this.AttachDecorator("MouthDecorator");
+
+    }
+    public void Item1()
+    {
+        this.AttachDecorator("BasicFinsDecorator");
+    }
+    public void Item2()
+    {
+        this.AttachDecorator("EyesDecorator");
+    }
+    public void Item3()
+    {
+        this.AttachDecorator("WhiskersDecorator");
+    }
+    public void Item4()
+    {
+        this.AttachDecorator("SlimeDecorator");
+    }
+    public void Item5()
+    {
+        this.AttachDecorator("SpearDecorator");
+    }
+    public void Item6()
+    {
+        this.AttachDecorator("SpikesDecorator");
+    }
+    public void Item7()
+    {
+        this.AttachDecorator("ThirdEyeDecorator");
+    }
+    public void Item8()
+    {
+        this.AttachDecorator("FishTailDecorator");
+    }
+
+    void AttachDecorator(string name)
+    {
+        var comp = new PlayerDecoratorFactory(this.adapterComponent, this).generate(name);
+        this.stats = comp.extend();
+        this.health = this.stats.health;
+    }
+
+    void HandleBuyMenu()
+    {
+        if (!this.buyMenuLock && Input.GetKey("p"))
+        {
+            if (this.buyMenu.activeSelf == false)
+            {
+                this.buyMenu.SetActive(true);
+                this.buyMenuLock = true;
+                StartCoroutine(SetBuyMenuLock());
+            }
+            else
+            {
+                this.buyMenu.SetActive(false);
+                this.buyMenuLock = true;
+                StartCoroutine(SetBuyMenuLock());
+            }
+        }
     }
     
     void HandleStayInsideScreen()

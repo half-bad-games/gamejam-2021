@@ -62,7 +62,7 @@ public class Spawner : MonoBehaviour
 
             var p = new GameObjectAdapterComponent(spawnedObject.name, spawnedObjectBaseComponent.GetType());
             dynamic baseComponent = spawnedObject.GetComponent(System.Type.GetType(spawnObject.name));
-            var comp = new DecoratorFactory(p, baseComponent).generate(10);
+            var comp = new EnemyDecoratorFactory(p, baseComponent).generate(3);
             var stats = comp.extend();
             baseComponent.stats = stats;
 
