@@ -64,7 +64,7 @@ public class Spawner : MonoBehaviour
             dynamic baseComponent = spawnedObject.GetComponent(System.Type.GetType(spawnObject.name));
             var comp = new DecoratorFactory(p, baseComponent).generate(10);
             var stats = comp.extend();
-            baseComponent.health = stats.health;
+            baseComponent.stats = stats;
 
             yield return new WaitForSeconds(spawnRate);
         }

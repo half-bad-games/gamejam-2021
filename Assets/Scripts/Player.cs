@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         HandlePlayerMovement();
         // HandleStayInsideScreen();
 
-        if (camera.orthographicSize < size * 7)
+        if (camera.orthographicSize < size * 4)
         {
             IncreaseCameraSize(camera.orthographicSize);
         }
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
     private void IncreaseCameraSize(float camSize)
     {
         t += Time.deltaTime;
-        camera.orthographicSize = camSize * 3;
+        camera.orthographicSize = camSize * 5;
     }
 
     private void IncreaseXPToleven()
@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
 
     private void IncreaseSize()
     {
-        int amount = size - growth;
+        int amount = 3;
         Vector3 local = transform.localScale;
         transform.localScale = new Vector3(local.x + 0.2f * amount,local.y + 0.2f * amount,local.z + 0.2f * amount);
         size++;
