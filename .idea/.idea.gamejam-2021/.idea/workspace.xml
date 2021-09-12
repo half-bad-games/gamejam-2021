@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92924e3f-33df-4934-9265-b783cf2a1787" name="Changes" comment="sadad">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.gamejam-2021/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.gamejam-2021/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    <list default="true" id="92924e3f-33df-4934-9265-b783cf2a1787" name="Changes" comment="asdf">
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game2.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game2.unity.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1631314824456</updated>
       <workItem from="1631314827045" duration="38810000" />
-      <workItem from="1631406478614" duration="7972000" />
+      <workItem from="1631406478614" duration="8281000" />
     </task>
     <task id="LOCAL-00001" summary="Remade project to a 2d project">
       <created>1631372515927</created>
@@ -163,7 +160,35 @@
       <option name="project" value="LOCAL" />
       <updated>1631406564877</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="made basic progression logic work">
+      <created>1631448244603</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1631448244603</updated>
+    </task>
+    <task id="LOCAL-00014" summary="commiting new scene">
+      <created>1631448282362</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1631448282362</updated>
+    </task>
+    <task id="LOCAL-00015" summary="asdf">
+      <created>1631448329743</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1631448329744</updated>
+    </task>
+    <task id="LOCAL-00016" summary="asdf">
+      <created>1631448339042</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1631448339042</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,9 +219,11 @@
     <MESSAGE value="removed useless code" />
     <MESSAGE value="implemented some player functionality" />
     <MESSAGE value="reeee" />
-    <MESSAGE value="asdf" />
     <MESSAGE value="asdasdasd" />
     <MESSAGE value="sadad" />
-    <option name="LAST_COMMIT_MESSAGE" value="sadad" />
+    <MESSAGE value="made basic progression logic work" />
+    <MESSAGE value="commiting new scene" />
+    <MESSAGE value="asdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="asdf" />
   </component>
 </project>
