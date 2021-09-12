@@ -52,19 +52,19 @@ public class PlayerCenterGravity : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Debug.Log("AM TRIGGERING");
-        // Player player;
-        // Enemy enemy;
-        // if (isPlayer)
-        // {
-        //     player = gameObject.GetComponent<Player>();
-        //     enemy = other.gameObject.GetComponent<Enemy>();
-        //
-        //     if ((player != null && enemy != null) && (player.size > enemy.size))
-        //     {
-        //         player.IncreaseCurrentXP(enemy.xpGains);
-        //         Destroy(other.gameObject);
-        //     }
-        // }
+        Debug.Log("AM TRIGGERING");
+        Player player;
+        Enemy enemy;
+        if (isPlayer)
+        {
+            player = gameObject.GetComponent<Player>();
+            enemy = other.gameObject.GetComponent<Enemy>();
+        
+            if ((player != null && enemy != null) && (player.size > enemy.size))
+            {
+                player.IncreaseCurrentXP(enemy.xpGains);
+                Destroy(other.gameObject);
+            }
+        }
     }
 }

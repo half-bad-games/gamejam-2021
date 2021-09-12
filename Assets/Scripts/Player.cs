@@ -120,9 +120,12 @@ public class Player : MonoBehaviour
 
     void AttachDecorator(string name)
     {
-        var comp = new PlayerDecoratorFactory(this.adapterComponent, this).generate(name);
-        this.stats = comp.extend();
-        this.health = this.stats.health;
+        if (this.currentSP >= 1)
+        {
+            var comp = new PlayerDecoratorFactory(this.adapterComponent, this).generate(name);
+            this.stats = comp.extend();
+            this.health = this.stats.health;
+        }
     }
 
     void HandleBuyMenu()
