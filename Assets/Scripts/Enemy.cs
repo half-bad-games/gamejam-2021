@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
+using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 public class Enemy : MonoBehaviour
@@ -9,45 +11,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] public GameObject gameArea;
     [SerializeField] public int size;
     [SerializeField] public float health;
+    [SerializeField] public int xpGains;
     private Stats stats;
     private Vector2 movement;
-
-    private float thrust = 100;
-    private float torque = 100;
-    public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        Vector2 thrust = new Vector2(Random.Range(-this.thrust, this.thrust), Random.Range(-this.thrust, this.thrust));
-        float torque = Random.Range(-this.torque, this.torque);
-
-        rb.AddForce(thrust);
-        rb.AddTorque(torque);
     }
 
     // Update is called once per frame
     void Update()
     {
-        HandleEnemyMovement();
         HandleStayInsideScreen();
     }
-
-    void HandleEnemyMovement()
-    {
-        // MeshCollider mesh = gameArea.GetComponent<MeshCollider>();
-        // MeshFilter meshF = gameArea.GetComponent<MeshFilter>();
-        // if (meshF.mesh.bounds.Contains(transform.position))
-        // {
-        //     Debug.Log("ASDASDASDASDA");
-        // }
-        // float screenX, screenY;
-        // screenX = Random.Range(mesh.bounds.min.x, mesh.bounds.max.x);
-        // screenY = Random.Range(mesh.bounds.min.y, mesh.bounds.max.y);
-        // // Debug.Log("X Y " + screenX + " " + screenY);
-        // var newPosition = new Vector2(screenX, screenY);
-        // transform.position = Vector2.Lerp(transform.position, newPosition, Time.deltaTime);
-    }
+    
 
     void HandleStayInsideScreen()
     {
