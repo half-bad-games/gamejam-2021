@@ -8,7 +8,7 @@ public class Buttons : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Game3");
     }
 
     public void Exit()
@@ -31,12 +31,4 @@ public class Buttons : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial");
     }
-
-    public void Backtogame()
-    {
-        SceneManager.LoadScene("Game");
-    }
-
-
-  
 }
