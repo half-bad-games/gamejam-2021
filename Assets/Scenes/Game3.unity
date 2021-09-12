@@ -204,7 +204,7 @@ Transform:
   m_LocalScale: {x: 780.8171, y: 758.8548, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &311651203
 GameObject:
@@ -235,7 +235,7 @@ Transform:
   m_Children:
   - {fileID: 519420032}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -276,7 +276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54caeb38d0db75d4cb653b3929732527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1191745385}
+  playerId: 
+  player: {fileID: 1296654066}
   offset: {x: 0, y: 0, z: -1}
 --- !u!20 &519420031
 Camera:
@@ -335,9 +336,9 @@ Transform:
   m_Father: {fileID: 311651204}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1191745385 stripped
+--- !u!4 &1296654066 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6205249690672827333, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6046055787083030428, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
   m_PrefabInstance: {fileID: 6205249691762859180}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1803017864
@@ -368,7 +369,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2040654446
 GameObject:
@@ -401,6 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRate: 1
   spawnObject: {fileID: 1340765532535222868, guid: a8774fd3561f075629225ed981a2c7e6, type: 3}
+  playerObject: {fileID: 0}
   camera: {fileID: 519420031}
   mapX: 300
   mapY: 300
@@ -416,7 +418,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6205249691762859180
 PrefabInstance:
@@ -425,6 +427,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6046055787083030424, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 6205249690672827329, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
       propertyPath: camera
       value: 
