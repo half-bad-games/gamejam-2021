@@ -24,7 +24,7 @@ public class Buttons : MonoBehaviour
 
     public void Back()
     {
-        SceneManager.LoadScene("ui");
+        SceneManager.LoadScene("StartMenu");
     }
 
     public void Tutorial()
