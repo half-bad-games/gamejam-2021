@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] public float spawnRate;
     [SerializeField] public GameObject spawnObject;
+    [SerializeField] public GameObject playerObject;
     [SerializeField] public Camera camera;
     [SerializeField] public float mapX;
     [SerializeField] public float mapY;
@@ -47,6 +48,17 @@ public class Spawner : MonoBehaviour
             dynamic spawnedObjectBaseComponent = spawnedObject.GetComponent(
                 System.Type.GetType(spawnObject.name)
             );
+            var obj = GameObject.Find(camera.GetComponent<CameraFollow>().playerId);
+            Enemy enemy = spawnedObject.GetComponent<Enemy>();
+            Player player = obj.GetComponent<Player>();
+            enemy.size = Random.Range(player.size - 5, player.size + 5);
+            if (enemy.size > 0)
+            {
+                enemy.xpGains *= enemy.size;
+            }
+            
+            Vector3 local = transform.localScale;
+            spawnedObject.transform.localScale = new Vector3(enemy.size,enemy.size,enemy.size);
 
             var p = new GameObjectAdapterComponent(spawnedObject.name, spawnedObjectBaseComponent.GetType());
             dynamic baseComponent = spawnedObject.GetComponent(System.Type.GetType(spawnObject.name));
@@ -65,36 +77,30 @@ public class Spawner : MonoBehaviour
         // top/bottom (true) or left/right (false)
         if (Random.Range(0, 2) == 1)
         {
-            Debug.Log("Top/Bottom");
             // set x position randomly
             x = Random.Range(outerSpawnMinX, outerSpawnMaxX);
  
             // spawn on top (true) or bottom (false)
             if (Random.Range(0, 2) == 1) {
-                Debug.Log("Top");
                 // set the z position to top
                 y = outerSpawnMaxY;
  
             } else {
-                Debug.Log("Bottom");
                 // set the z position to bottom
                 y = outerSpawnMinY;
  
             }
  
         } else {
-            Debug.Log("Left/Right");
             // set z position randomly
             y = Random.Range(outerSpawnMinY, outerSpawnMaxY);
  
             // spawn on left (true) or right (false)
             if (Random.Range(0, 2) == 1) {
-                Debug.Log("Left");
                 // set the x position to left
                 x = outerSpawnMinX;
  
             } else {
-                Debug.Log("Right");
                 // set the x position to right
                 x = outerSpawnMaxX;
             }

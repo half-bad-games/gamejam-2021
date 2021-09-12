@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   health: 100
-  xpGains: 10
+  xpGains: 30
 --- !u!212 &1340765532535222858
 SpriteRenderer:
   m_ObjectHideFlags: 0
