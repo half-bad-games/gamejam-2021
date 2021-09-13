@@ -7,62 +7,65 @@ using Random = UnityEngine.Random;
 public class PlayerCenterGravity : MonoBehaviour
 {
     private bool isPlayer;
-    private float thrust = 500;
-    private float torque = 500;
-    public GameObject player;
+    public GameObject playerObject;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.GetInstanceID() != player.gameObject.GetInstanceID())
+        if ((this.playerObject != null) && this.gameObject.GetInstanceID() != this.playerObject.gameObject.GetInstanceID())
         {
-            isPlayer = false;
-            Vector2 thrust = new Vector2(Random.Range(-this.thrust, this.thrust), Random.Range(-this.thrust, this.thrust));
-            float torque = Random.Range(-this.torque, this.torque);
-        
-            rb.AddForce(thrust);
-            rb.AddTorque(torque);
+            this.isPlayer = false;
+
+            var comp = this.gameObject.GetComponent<Playable>();
+
+            var thrust = 30f * comp.stats.speed;
+            var torque = 10f * comp.stats.speed;
+
+            this.rb.AddForce(
+                new Vector2(Random.Range(-thrust, thrust), Random.Range(-thrust, thrust))
+            );
+            this.rb.AddTorque(Random.Range(-torque, torque));
         }
         else
         {
-            isPlayer = true;
+            this.isPlayer = true;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isPlayer)
-        {
-            var modelPosition = transform.position;
-            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            var delta_x = modelPosition.x - mousePosition.x;
-            var delta_y = modelPosition.y - mousePosition.y;
-
-            var delta_x_norm = delta_x / (Mathf.Sqrt(delta_x * delta_x + delta_y * delta_y));
-            var delta_y_norm = delta_y / (Mathf.Sqrt(delta_x * delta_x + delta_y * delta_y));
-            var player_angle = (Mathf.Atan2(delta_y_norm, delta_x_norm) * (Mathf.Rad2Deg));
-
-            // GameObject parent = transform.parent.gameObject;
-            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, player_angle + 90));
-        }
+        
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("AM TRIGGERING");
-        Player player;
-        Enemy enemy;
-        if (isPlayer)
+        if (playerObject == null || other == null)
         {
-            player = gameObject.GetComponent<Player>();
-            enemy = other.gameObject.GetComponent<Enemy>();
-        
-            if ((player != null && enemy != null) && (player.size > enemy.size))
+            return;
+        }
+
+        Player player = playerObject.GetComponent<Player>();
+        Enemy enemy = other.gameObject.GetComponent<Enemy>();
+
+        if (player == null || enemy == null)
+        {
+            return;
+        }
+
+        if (this.isPlayer)
+        {
+            if (player.size >= enemy.size)
             {
                 player.IncreaseCurrentXP(enemy.xpGains);
+                Destroy(other.gameObject);
+            }
+        }
+        else
+        {
+            if (player.size <= enemy.size)
+            {
+                enemy.IncreaseCurrentXP(enemy.xpGains);
                 Destroy(other.gameObject);
             }
         }

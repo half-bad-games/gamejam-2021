@@ -3,50 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public struct Stats
-{
-    public int speed;
-    public int damage;
-    public float health;
-    public int agility;
-    public int vision;
-}
-
 interface Component
 {
-    Stats extend();
+    Playable extend();
 }
 
-class GameObjectAdapterComponent : Component
+class PlayableAdapterComponent : Component
 {
-    Stats stats;
+    Playable baseComponent;
 
-    dynamic baseComponent;
-
-    public GameObjectAdapterComponent(string name, System.Type type)
+    public PlayableAdapterComponent(string name)
     {
         var gameObj = GameObject.Find(name);
 
-        if (gameObj)
+        if (gameObj != null)
         {
-            baseComponent = gameObj.GetComponent(type);
-
-            this.stats = new Stats();
-            this.stats.health = baseComponent.health;
+            baseComponent = gameObj.GetComponent<Playable>();
         }
     }
 
-    public Stats extend()
+    public Playable extend()
     {
-        return this.stats;
+        return this.baseComponent;
     }
 }
 
 abstract class Decorator : Component
 {
     Component component;
-    protected dynamic baseComponent;
-    protected Stats stats;
+    protected Playable currentComponent;
+    protected Playable baseComponent;
 
     protected Decorator() { }
 
@@ -60,7 +46,7 @@ abstract class Decorator : Component
         this.component = component;
     }
 
-    public void setComponent(Component component, dynamic baseComponent)
+    public void setComponent(Component component, Playable baseComponent)
     {
         this.setComponent(component);
         this.baseComponent = baseComponent;
@@ -84,13 +70,12 @@ abstract class Decorator : Component
             }
         }
     }
+    public abstract Playable add();
 
-    public Stats extend()
+    public Playable extend()
     {
-        this.stats = this.component.extend();
+        this.currentComponent = this.component.extend();
         this.loadAsset();
         return this.add();
     }
-
-    public abstract Stats add();
 }

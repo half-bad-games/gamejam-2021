@@ -6,10 +6,10 @@ using UnityEngine;
 class EnemyDecoratorFactory
 {
     Component component;
-    dynamic baseComponent;
+    Playable baseComponent;
     List<Decorator> decorators;
 
-    public EnemyDecoratorFactory(Component component, dynamic baseComponent)
+    public EnemyDecoratorFactory(Component component, Playable baseComponent)
     {
         this.component = component;
         this.baseComponent = baseComponent;

@@ -6,22 +6,20 @@ public class WeaponCollider : MonoBehaviour
 {
     private bool isPlayer;
     private GameObject playerObject;
-    //private GameObject playerObject;
     
     // Start is called before the first frame update
     void Start()
     {
         var camera = GameObject.Find("Main Camera");
-        playerObject = GameObject.Find(camera.GetComponent<CameraFollow>().playerId);
-        if (playerObject != null && (transform.parent.gameObject.name == playerObject.gameObject.name))
+        this.playerObject = GameObject.Find(camera.GetComponent<CameraFollow>().playerId);
+
+        if (playerObject != null && (this.transform.parent.gameObject.name == this.playerObject.gameObject.name))
         {
-            Debug.Log("Player has LightSaber");
-            isPlayer = true;
+            this.isPlayer = true;
         }
         else
         {
-            // Debug.Log("Enemy has LightSaber");
-            isPlayer = false;
+            this.isPlayer = false;
         }
     }
 
@@ -33,42 +31,33 @@ public class WeaponCollider : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isPlayer)
+        if (playerObject == null || other == null)
         {
-            Player player = playerObject.GetComponent<Player>();
-            Debug.Log("Player TRIGGERING");
-            Enemy enemy;
-            enemy = other.gameObject.GetComponent<Enemy>();
+            return;
+        }
 
-            Debug.Log("p " + player);
-            if ((player != null && enemy != null) && (player.size > enemy.size))
+        Player player = playerObject.GetComponent<Player>();
+        Enemy enemy = other.gameObject.GetComponent<Enemy>();
+
+        if (player == null || enemy == null)
+        {
+            return;
+        }
+
+        if (this.isPlayer)
+        {
+            if (player.size >= enemy.size)
             {
-                Debug.Log("ASDF");
                 player.IncreaseCurrentXP(enemy.xpGains);
                 Destroy(other.gameObject);
-            } else if (false)
-            {
-                
             }
         }
         else
         {
-            // Debug.Log("Enemy TRIGGERING");
-            Player player = playerObject.GetComponent<Player>();
-            Debug.Log("Player TRIGGERING");
-            Enemy enemy;
-            enemy = other.gameObject.GetComponent<Enemy>();
-
-            Debug.Log("p " + player);
-            if ((player != null && enemy != null) && (player.size < enemy.size))
+            if (player.size <= enemy.size)
             {
-                Debug.Log("ASDF");
                 enemy.IncreaseCurrentXP(enemy.xpGains);
                 Destroy(other.gameObject);
-            } else if (false)
-            {
-                
-                
             }
         }
     }

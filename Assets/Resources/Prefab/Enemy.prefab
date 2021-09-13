@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340765532535222868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 148.5, y: 12.3, z: 0}
-  m_LocalScale: {x: 8.3115, y: 6.234433, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b17a8a6cda9ac4196d67caa57b6699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6205249690672827332, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
+  playerObject: {fileID: 6046055787083030429, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
   rb: {fileID: 1340765532535222870}
 --- !u!114 &1340765532535222857
 MonoBehaviour:
@@ -98,8 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb41dd58c1a308ae952f6c3a4bb855d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
-  health: 100
+  stats:
+    speed: 30
+    damage: 10
+    health: 10
+    agility: 10
+    vision: 10
+  size: 1
+  currentSP: 0
   xpGains: 30
 --- !u!212 &1340765532535222858
 SpriteRenderer:
@@ -112,7 +118,6 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -139,8 +144,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1393638771
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ffd1e04bf56ca941b8647eac91887bea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
