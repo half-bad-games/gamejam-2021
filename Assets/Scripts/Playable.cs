@@ -21,15 +21,15 @@ public class Playable : MonoBehaviour
     public int currentSP;
     private int growth;
 
+    protected Playable()
+    {
+        this.currentXPToLevel = 100;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        this.stats = new Stats();
-        this.growth = 0;
-        this.size = 1;
-        this.currentXPToLevel = 100;
-        this.currentXP = 0;
-        this.currentSP = 0;
+        
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class Playable : MonoBehaviour
 
     private void IncreaseXPTolevel()
     {
-        this.currentXPToLevel = 100 + (int)Mathf.Pow(this.currentXPToLevel, 1.1f);
+        this.currentXPToLevel = 300 + (int)Mathf.Pow(this.currentXPToLevel, 1.05f);
     }
     private void IncreaseSP()
     {
@@ -74,8 +74,11 @@ public class Playable : MonoBehaviour
 
     public void IncreaseCurrentXP(int xpGains)
     {
+        Debug.Log($"xpGains: {xpGains}, currentXP: {this.currentXP}, currentXPToLevel: {this.currentXPToLevel}");
+
         this.currentXP += xpGains;
-        while (this.currentXP >= this.currentXPToLevel)
+
+        if (this.currentXP >= this.currentXPToLevel)
         {
             IncreaseXPTolevel();
             IncreaseSize();

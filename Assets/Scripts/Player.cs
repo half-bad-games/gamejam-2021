@@ -5,7 +5,6 @@ using Vector3 = UnityEngine.Vector3;
 public class Player : Playable
 {
     [SerializeField] private Camera camera;
-    [SerializeField] public float movementSpeed;
     [SerializeField] public GameObject buyMenu;
     [SerializeField] public GameObject pause;
     [SerializeField] public AudioSource ambientAudio;
@@ -31,7 +30,7 @@ public class Player : Playable
         HandlePlayerMovement();
         // HandleStayInsideScreen();
 
-        if (camera.orthographicSize < size * 10)
+        if (camera.orthographicSize <= size * 10)
         {
             IncreaseCameraSize(camera.orthographicSize);
         }
