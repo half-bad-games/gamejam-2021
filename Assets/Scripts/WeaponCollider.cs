@@ -36,8 +36,6 @@ public class WeaponCollider : MonoBehaviour
             return;
         }
 
-        Debug.Log($"WC {this.isPlayer}");
-
         Player player = playerObject.GetComponent<Player>();
         Enemy enemy = other.gameObject.GetComponent<Enemy>();
 

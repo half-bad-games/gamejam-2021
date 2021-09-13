@@ -13,9 +13,7 @@ public class Enemy : Playable
     // Start is called before the first frame update
     void Start()
     {
-        this.currentXPToLevel = 100;
-        this.currentXP = 0;
-        this.currentSP = 0;
+        
     }
 
     // Update is called once per frame
@@ -23,7 +21,6 @@ public class Enemy : Playable
     {
         // wwHandleStayInsideScreen();
     }
-    
 
     void HandleStayInsideScreen()
     {

@@ -7,8 +7,6 @@ using Random = UnityEngine.Random;
 public class PlayerCenterGravity : MonoBehaviour
 {
     private bool isPlayer;
-    private float thrust = 4000;
-    private float torque = 500;
     public GameObject playerObject;
     public Rigidbody2D rb;
 
@@ -19,10 +17,15 @@ public class PlayerCenterGravity : MonoBehaviour
         {
             this.isPlayer = false;
 
+            var comp = this.gameObject.GetComponent<Playable>();
+
+            var thrust = 30f * comp.stats.speed;
+            var torque = 10f * comp.stats.speed;
+
             this.rb.AddForce(
-                new Vector2(Random.Range(-this.thrust, this.thrust), Random.Range(-this.thrust, this.thrust))
+                new Vector2(Random.Range(-thrust, thrust), Random.Range(-thrust, thrust))
             );
-            this.rb.AddTorque(Random.Range(-this.torque, this.torque));
+            this.rb.AddTorque(Random.Range(-torque, torque));
         }
         else
         {

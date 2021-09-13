@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public struct Stats
 {
     public int speed;
@@ -15,10 +16,9 @@ public class Playable : MonoBehaviour
 {
     [SerializeField] public Stats stats;
     [SerializeField] public int size;
-    [SerializeField] public float health;
-    [SerializeField] public int currentXPToLevel;
-    [SerializeField] public int currentXP;
-    [SerializeField] public int currentSP;
+    private int currentXPToLevel;
+    private int currentXP;
+    public int currentSP;
     private int growth;
 
     // Start is called before the first frame update
@@ -27,6 +27,9 @@ public class Playable : MonoBehaviour
         this.stats = new Stats();
         this.growth = 0;
         this.size = 1;
+        this.currentXPToLevel = 100;
+        this.currentXP = 0;
+        this.currentSP = 0;
     }
 
     // Update is called once per frame
@@ -44,6 +47,16 @@ public class Playable : MonoBehaviour
         currentSP += 1;
     }
 
+    public int GetXp()
+    {
+        return this.currentXP;
+    }
+
+    public int GetSp()
+    {
+        return this.currentSP;
+    }
+
     public void DecreaseSP(int amount)
     {
         currentSP -= amount;
@@ -55,11 +68,8 @@ public class Playable : MonoBehaviour
 
     private void IncreaseSize()
     {
-        int amount = size - growth;
-        Vector3 local = transform.localScale;
-        transform.localScale = new Vector3(local.x + 0.2f * amount, local.y + 0.2f * amount, local.z + 0.2f * amount);
         size++;
-        growth++;
+        transform.localScale = new Vector3(size, size, size);
     }
 
     public void IncreaseCurrentXP(int xpGains)

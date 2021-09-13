@@ -47,13 +47,13 @@ public class Spawner : MonoBehaviour
                 Player player = obj.GetComponent<Player>();
             
                 Enemy enemy = spawnedObject.GetComponent<Enemy>();
-                enemy.size = Random.Range(0, player.size + 2);
+                enemy.size = Random.Range(1, player.size + 2);
                 if (enemy.size > 0)
                 {
                     enemy.xpGains *= enemy.size;
                 }
 
-                spawnedObject.transform.localScale = new Vector3(enemy.size,enemy.size,enemy.size);
+                spawnedObject.transform.localScale = new Vector3(enemy.size, enemy.size, enemy.size);
             }
 
             var p = new PlayableAdapterComponent(spawnedObject.name);

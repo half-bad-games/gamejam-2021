@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Vector3 = UnityEngine.Vector3;
 
 public class Player : Playable
@@ -8,14 +9,13 @@ public class Player : Playable
     [SerializeField] public GameObject buyMenu;
     [SerializeField] public GameObject pause;
     [SerializeField] public AudioSource ambientAudio;
-    
+    [SerializeField] public Text SPText;
+
     private PlayableAdapterComponent adapterComponent;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.stats = new Stats();
-
         var name = this.GetInstanceID().ToString();
         camera.GetComponent<CameraFollow>().playerId = name;
         this.name = name;
@@ -31,10 +31,12 @@ public class Player : Playable
         HandlePlayerMovement();
         // HandleStayInsideScreen();
 
-        if (camera.orthographicSize < size * 4)
+        if (camera.orthographicSize < size * 10)
         {
             IncreaseCameraSize(camera.orthographicSize);
         }
+
+        SPText.text = this.GetSp().ToString();
 
         HandleBuyMenu();
     }
@@ -86,19 +88,19 @@ public class Player : Playable
 
         if (Input.GetKey("w"))
         {
-            pos.y += movementSpeed * Time.deltaTime;
+            pos.y += this.stats.speed * Time.deltaTime;
         }
         if (Input.GetKey("a"))
         {
-            pos.x -= movementSpeed * Time.deltaTime;
+            pos.x -= this.stats.speed * Time.deltaTime;
         }
         if (Input.GetKey("s"))
         {
-            pos.y -= movementSpeed * Time.deltaTime;
+            pos.y -= this.stats.speed * Time.deltaTime;
         }
         if (Input.GetKey("d"))
         {
-            pos.x += movementSpeed * Time.deltaTime;
+            pos.x += this.stats.speed * Time.deltaTime;
         }
 
         transform.position = pos;
