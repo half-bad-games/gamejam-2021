@@ -19,12 +19,14 @@ public class Playable : MonoBehaviour
     [SerializeField] public int currentXPToLevel;
     [SerializeField] public int currentXP;
     [SerializeField] public int currentSP;
-    private int growth = 0;
+    private int growth;
 
     // Start is called before the first frame update
     void Start()
     {
         this.stats = new Stats();
+        this.growth = 0;
+        this.size = 1;
     }
 
     // Update is called once per frame

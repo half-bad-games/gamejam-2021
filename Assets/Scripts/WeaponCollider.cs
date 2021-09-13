@@ -11,8 +11,9 @@ public class WeaponCollider : MonoBehaviour
     void Start()
     {
         var camera = GameObject.Find("Main Camera");
-        playerObject = GameObject.Find(camera.GetComponent<CameraFollow>().playerId);
-        if (playerObject != null && (transform.parent.gameObject.name == playerObject.gameObject.name))
+        this.playerObject = GameObject.Find(camera.GetComponent<CameraFollow>().playerId);
+
+        if (playerObject != null && (this.transform.parent.gameObject.name == this.playerObject.gameObject.name))
         {
             this.isPlayer = true;
         }
@@ -30,6 +31,13 @@ public class WeaponCollider : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (playerObject == null || other == null)
+        {
+            return;
+        }
+
+        Debug.Log($"WC {this.isPlayer}");
+
         Player player = playerObject.GetComponent<Player>();
         Enemy enemy = other.gameObject.GetComponent<Enemy>();
 

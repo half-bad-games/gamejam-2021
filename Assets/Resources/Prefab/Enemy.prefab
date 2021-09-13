@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b17a8a6cda9ac4196d67caa57b6699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6205249690672827332, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
+  playerObject: {fileID: 6046055787083030429, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
   rb: {fileID: 1340765532535222870}
 --- !u!114 &1340765532535222857
 MonoBehaviour:
