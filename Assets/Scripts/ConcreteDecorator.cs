@@ -9,10 +9,10 @@ class SpearDecorator : Decorator
 
     public SpearDecorator(Component component) : base(component) { }
 
-    public override Stats add()
+    public override Playable add()
     {
-        this.stats.damage += 10;
-        return this.stats;
+        this.currentComponent.stats.damage += 10;
+        return this.currentComponent;
     }
 }
 
@@ -22,10 +22,10 @@ class FishTailDecorator : Decorator
 
     public FishTailDecorator(Component component) : base(component) { }
 
-    public override Stats add()
+    public override Playable add()
     {
-        this.stats.speed += 20;
-        return this.stats;
+        this.currentComponent.stats.speed += 20;
+        return this.currentComponent;
     }
 }
 
@@ -35,10 +35,10 @@ class TapedSwordDecorator : Decorator
 
     public TapedSwordDecorator(Component component) : base(component) { }
 
-    public override Stats add()
+    public override Playable add()
     {
-        this.stats.damage += 20;
-        return this.stats;
+        this.currentComponent.stats.damage += 20;
+        return this.currentComponent;
     }
 }
 
@@ -48,10 +48,10 @@ class LightSaberDecorator : Decorator
 
     public LightSaberDecorator(Component component) : base(component) { }
 
-    public override Stats add()
+    public override Playable add()
     {
-        this.stats.damage += 100;
-        return this.stats;
+        this.currentComponent.stats.damage += 100;
+        return this.currentComponent;
     }
 }
 
@@ -61,10 +61,10 @@ class EyesDecorator : Decorator
 
     public EyesDecorator(Component component) : base(component) { }
 
-    public override Stats add()
+    public override Playable add()
     {
-        this.stats.vision += 5;
-        return this.stats;
+        this.currentComponent.stats.vision += 5;
+        return this.currentComponent;
     }
 }
 
@@ -74,10 +74,10 @@ class WhiskersDecorator : Decorator
 
     public WhiskersDecorator(Component component) : base(component) { }
 
-    public override Stats add()
+    public override Playable add()
     {
-        this.stats.agility += 5;
-        return this.stats;
+        this.currentComponent.stats.agility += 5;
+        return this.currentComponent;
     }
 }
 
@@ -87,10 +87,10 @@ class ThirdEyeDecorator : Decorator
 
     public ThirdEyeDecorator(Component component) : base(component) { }
 
-    public override Stats add()
+    public override Playable add()
     {
-        this.stats.vision += 10;
-        return this.stats;
+        this.currentComponent.stats.vision += 10;
+        return this.currentComponent;
     }
 }
 
@@ -100,10 +100,10 @@ class SlimeDecorator : Decorator
 
     public SlimeDecorator(Component component) : base(component) { }
 
-    public override Stats add()
+    public override Playable add()
     {
-        this.stats.speed += 10;
-        return this.stats;
+        this.currentComponent.stats.speed += 10;
+        return this.currentComponent;
     }
 }
 
@@ -113,10 +113,10 @@ class ForceFieldDecorator : Decorator
 
     public ForceFieldDecorator(Component component) : base(component) { }
 
-    public override Stats add()
+    public override Playable add()
     {
-        this.stats.health += 100;
-        return this.stats;
+        this.currentComponent.stats.health += 100;
+        return this.currentComponent;
     }
 }
 
@@ -126,10 +126,10 @@ class BasicFinsDecorator : Decorator
 
     public BasicFinsDecorator(Component component) : base(component) { }
 
-    public override Stats add()
+    public override Playable add()
     {
-        this.stats.speed += 5;
-        return this.stats;
+        this.currentComponent.stats.speed += 5;
+        return this.currentComponent;
     }
 }
 
@@ -139,10 +139,10 @@ class MouthDecorator : Decorator
 
     public MouthDecorator(Component component) : base(component) { }
 
-    public override Stats add()
+    public override Playable add()
     {
-        this.stats.damage += 5;
-        return this.stats;
+        this.currentComponent.stats.damage += 5;
+        return this.currentComponent;
     }
 }
 
@@ -152,10 +152,10 @@ class SpikesDecorator : Decorator
 
     public SpikesDecorator(Component component) : base(component) { }
 
-    public override Stats add()
+    public override Playable add()
     {
-        this.stats.damage += 5;
-        this.stats.health += 10;
-        return this.stats;
+        this.currentComponent.stats.damage += 5;
+        this.currentComponent.stats.health += 10;
+        return this.currentComponent;
     }
 }

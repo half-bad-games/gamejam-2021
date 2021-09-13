@@ -15,12 +15,10 @@ public class WeaponCollider : MonoBehaviour
         playerObject = GameObject.Find(camera.GetComponent<CameraFollow>().playerId);
         if (playerObject != null && (transform.parent.gameObject.name == playerObject.gameObject.name))
         {
-            Debug.Log("Player has LightSaber");
             isPlayer = true;
         }
         else
         {
-            // Debug.Log("Enemy has LightSaber");
             isPlayer = false;
         }
     }
@@ -36,14 +34,11 @@ public class WeaponCollider : MonoBehaviour
         if (isPlayer)
         {
             Player player = playerObject.GetComponent<Player>();
-            Debug.Log("Player TRIGGERING");
             Enemy enemy;
             enemy = other.gameObject.GetComponent<Enemy>();
 
-            Debug.Log("p " + player);
             if ((player != null && enemy != null) && (player.size > enemy.size))
             {
-                Debug.Log("ASDF");
                 player.IncreaseCurrentXP(enemy.xpGains);
                 Destroy(other.gameObject);
             } else if (false)
@@ -53,16 +48,12 @@ public class WeaponCollider : MonoBehaviour
         }
         else
         {
-            // Debug.Log("Enemy TRIGGERING");
             Player player = playerObject.GetComponent<Player>();
-            Debug.Log("Player TRIGGERING");
             Enemy enemy;
             enemy = other.gameObject.GetComponent<Enemy>();
 
-            Debug.Log("p " + player);
             if ((player != null && enemy != null) && (player.size < enemy.size))
             {
-                Debug.Log("ASDF");
                 enemy.IncreaseCurrentXP(enemy.xpGains);
                 Destroy(other.gameObject);
             } else if (false)

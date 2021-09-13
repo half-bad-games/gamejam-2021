@@ -6,10 +6,10 @@ using UnityEngine;
 class PlayerDecoratorFactory
 {
     Component component;
-    dynamic baseComponent;
+    Playable baseComponent;
     List<Decorator> decorators;
 
-    public PlayerDecoratorFactory(Component component, dynamic baseComponent)
+    public PlayerDecoratorFactory(Component component, Playable baseComponent)
     {
         this.component = component;
         this.baseComponent = baseComponent;
@@ -39,20 +39,6 @@ class PlayerDecoratorFactory
                 dec = decorators[i];
                 dec.setComponent(this.component, this.baseComponent);
             }
-
-            // var lastDec = dec;
-            // dec = System.Activator.CreateInstance(
-            //     decorators[Random.Range(0, this.decorators.Count)].GetType()
-            // ) as Decorator;
-
-            // if (i == 0)
-            // {
-            //     dec.setComponent(this.component);
-            // }
-            // else
-            // {
-            //     dec.setComponent(lastDec, this.baseComponent);
-            // }
         }
 
         return dec;

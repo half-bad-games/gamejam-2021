@@ -1,44 +1,33 @@
 using UnityEngine;
-using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
-public class Player : MonoBehaviour
+public class Player : Playable
 {
     [SerializeField] private Camera camera;
     [SerializeField] public float movementSpeed;
-    [SerializeField] public float health;
-    [SerializeField] public int size;
-    [SerializeField] public int currentXPToLevel;
-    [SerializeField] public int currentXP;
-    [SerializeField] public int currentSP;
-    // private dynamic buyMenu;
     [SerializeField] public GameObject buyMenu;
-    private bool buyMenuLock;
-    private Stats stats;
-    private float t = 0;
-    private int growth = 0;
-    private GameObjectAdapterComponent adapterComponent;
+    [SerializeField] public GameObject pause;
+    [SerializeField] public AudioSource ambientAudio;
+    
+    private PlayableAdapterComponent adapterComponent;
 
     // Start is called before the first frame update
     void Start()
     {
+        this.stats = new Stats();
+
         var name = this.GetInstanceID().ToString();
         camera.GetComponent<CameraFollow>().playerId = name;
         this.name = name;
-        // var p = new GameObjectAdapterComponent(this.name, this.GetType());
-        // var comp = new DecoratorFactory(p, this).generate(10);
-        // stats = comp.extend();
-        // health = stats.health;
-        this.buyMenuLock = false;
 
         this.name = this.GetInstanceID().ToString();
-        this.adapterComponent = new GameObjectAdapterComponent(this.name, this.GetType());
+        this.adapterComponent = new PlayableAdapterComponent(this.name);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // GameObject.Find("HEALTH").GetComponent<UnityEngine.UI.Text>().text = ((int)health).ToString();
+        HandleMouseInput();
         HandlePlayerMovement();
         // HandleStayInsideScreen();
 
@@ -50,9 +39,51 @@ public class Player : MonoBehaviour
         HandleBuyMenu();
     }
 
+    void HandleMouseInput()
+    {
+        if (this.pause.activeSelf == true)
+        {
+            return;
+        }
+
+        var modelPosition = transform.position;
+        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        var delta_x = modelPosition.x - mousePosition.x;
+        var delta_y = modelPosition.y - mousePosition.y;
+
+        var delta_x_norm = delta_x / (Mathf.Sqrt(delta_x * delta_x + delta_y * delta_y));
+        var delta_y_norm = delta_y / (Mathf.Sqrt(delta_x * delta_x + delta_y * delta_y));
+        var player_angle = (Mathf.Atan2(delta_y_norm, delta_x_norm) * (Mathf.Rad2Deg));
+
+        // GameObject parent = transform.parent.gameObject;
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, player_angle + 90));
+    }
+    void Pause()
+    {
+        if (this.pause.activeSelf == false)
+        {
+            this.pause.SetActive(true);
+            Time.timeScale = 0;
+            this.ambientAudio.mute = true;
+        }
+        else
+        {
+            this.pause.SetActive(false);
+            Time.timeScale = 1;
+            this.ambientAudio.mute = false;
+        }
+    }
+
     void HandlePlayerMovement()
     {
         Vector3 pos = transform.position;
+
+        if (Input.GetKeyDown("escape"))
+        {
+            this.Pause();
+        }
+
         if (Input.GetKey("w"))
         {
             pos.y += movementSpeed * Time.deltaTime;
@@ -73,17 +104,9 @@ public class Player : MonoBehaviour
         transform.position = pos;
     }
 
-    System.Collections.IEnumerator SetBuyMenuLock()
-    {
-        yield return new WaitForSeconds(0.1f);
-        
-        this.buyMenuLock = false;
-    }
-
     public void Item0()
     {
         this.AttachDecorator("MouthDecorator");
-
     }
     public void Item1()
     {
@@ -122,27 +145,25 @@ public class Player : MonoBehaviour
     {
         if (this.currentSP >= 1)
         {
-            var comp = new PlayerDecoratorFactory(this.adapterComponent, this).generate(name);
-            this.stats = comp.extend();
-            this.health = this.stats.health;
+            new PlayerDecoratorFactory(this.adapterComponent, this)
+                .generate(name)
+                .extend();
+
+            this.currentSP -= 1;
         }
     }
 
     void HandleBuyMenu()
     {
-        if (!this.buyMenuLock && Input.GetKey("p"))
+        if (Input.GetKeyDown("p"))
         {
             if (this.buyMenu.activeSelf == false)
             {
                 this.buyMenu.SetActive(true);
-                this.buyMenuLock = true;
-                StartCoroutine(SetBuyMenuLock());
             }
             else
             {
                 this.buyMenu.SetActive(false);
-                this.buyMenuLock = true;
-                StartCoroutine(SetBuyMenuLock());
             }
         }
     }
@@ -166,49 +187,11 @@ public class Player : MonoBehaviour
     
     private void IncreaseCameraSize(float camSize)
     {
-        t += Time.deltaTime;
         camera.orthographicSize = camSize * 5;
     }
 
-    private void IncreaseXPToleven()
+    public Stats getStats()
     {
-        Debug.Log("WTF");
-        currentXPToLevel *= (int) 1.2;
+        return this.stats;
     }
-
-    public void IncreaseCurrentXP(int xpGains)
-    {
-        currentXP += xpGains;
-        while (currentXP >= currentXPToLevel)
-        {
-            IncreaseXPToleven();
-            IncreaseSize();
-            currentXP = currentXP - currentXPToLevel;
-            IncreaseSP();
-        }
-    }
-
-    private void IncreaseSP()
-    {
-        currentSP += 1;
-    }
-
-    public void DecreaseSP(int amount)
-    {
-        currentSP -= amount;
-        if (currentSP > 0)
-        {
-            currentSP = 0;
-        }
-    }
-
-    private void IncreaseSize()
-    {
-        int amount = 3;
-        Vector3 local = transform.localScale;
-        transform.localScale = new Vector3(local.x + 0.2f * amount,local.y + 0.2f * amount,local.z + 0.2f * amount);
-        size++;
-        growth++;
-    }
-    
 }

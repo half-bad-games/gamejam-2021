@@ -15,7 +15,11 @@ public class PlayerCenterGravity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.GetInstanceID() != player.gameObject.GetInstanceID())
+        if (player != null)
+        {
+            isPlayer = true;
+        }
+        else
         {
             isPlayer = false;
             Vector2 thrust = new Vector2(Random.Range(-this.thrust, this.thrust), Random.Range(-this.thrust, this.thrust));
@@ -24,35 +28,16 @@ public class PlayerCenterGravity : MonoBehaviour
             rb.AddForce(thrust);
             rb.AddTorque(torque);
         }
-        else
-        {
-            isPlayer = true;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isPlayer)
-        {
-            var modelPosition = transform.position;
-            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            var delta_x = modelPosition.x - mousePosition.x;
-            var delta_y = modelPosition.y - mousePosition.y;
-
-            var delta_x_norm = delta_x / (Mathf.Sqrt(delta_x * delta_x + delta_y * delta_y));
-            var delta_y_norm = delta_y / (Mathf.Sqrt(delta_x * delta_x + delta_y * delta_y));
-            var player_angle = (Mathf.Atan2(delta_y_norm, delta_x_norm) * (Mathf.Rad2Deg));
-
-            // GameObject parent = transform.parent.gameObject;
-            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, player_angle + 90));
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("AM TRIGGERING");
         Player player;
         Enemy enemy;
         if (isPlayer)

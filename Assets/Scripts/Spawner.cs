@@ -35,36 +35,32 @@ public class Spawner : MonoBehaviour
             var yMin = vertExtent - mapY / 2.0f;
             var yMax = mapY / 2.0f - vertExtent;
 
-            // var screenX = Random.Range(xMin, xMax);
-            // var screenY = Random.Range(yMin, yMax);
-            //Vector2 pos = new Vector2(screenX, screenY);
-            Vector3 a = randomSpawn(-1.1f, -1.1f, 1.1f, 1.1f);
-            // var screenX = Random.Range(1.1f, 2.0f);
-            // var screenY = Random.Range(1.1f, 2.0f);
-            Vector2 pos = Camera.main.ViewportToWorldPoint(a);
+            Vector2 pos = Camera.main.ViewportToWorldPoint(randomSpawn(-1.2f, -1.2f, 1.2f, 1.2f));
 
             GameObject spawnedObject = Instantiate(spawnObject, pos, Quaternion.identity);
             spawnedObject.name = spawnedObject.GetInstanceID().ToString();
-            dynamic spawnedObjectBaseComponent = spawnedObject.GetComponent(
-                System.Type.GetType(spawnObject.name)
-            );
-            var obj = GameObject.Find(camera.GetComponent<CameraFollow>().playerId);
-            Enemy enemy = spawnedObject.GetComponent<Enemy>();
-            Player player = obj.GetComponent<Player>();
-            enemy.size = Random.Range(player.size - 5, player.size + 5);
-            if (enemy.size > 0)
-            {
-                enemy.xpGains *= enemy.size;
-            }
-            
-            Vector3 local = transform.localScale;
-            spawnedObject.transform.localScale = new Vector3(enemy.size,enemy.size,enemy.size);
 
-            var p = new GameObjectAdapterComponent(spawnedObject.name, spawnedObjectBaseComponent.GetType());
-            dynamic baseComponent = spawnedObject.GetComponent(System.Type.GetType(spawnObject.name));
-            var comp = new EnemyDecoratorFactory(p, baseComponent).generate(3);
-            var stats = comp.extend();
-            baseComponent.stats = stats;
+            var obj = GameObject.Find(camera.GetComponent<CameraFollow>().playerId);
+
+            if (obj != null)
+            {
+                Player player = obj.GetComponent<Player>();
+            
+                Enemy enemy = spawnedObject.GetComponent<Enemy>();
+                enemy.size = Random.Range(0, player.size + 2);
+                if (enemy.size > 0)
+                {
+                    enemy.xpGains *= enemy.size;
+                }
+
+                spawnedObject.transform.localScale = new Vector3(enemy.size,enemy.size,enemy.size);
+            }
+
+            var p = new PlayableAdapterComponent(spawnedObject.name);
+            var baseComponent = spawnedObject.GetComponent<Playable>();
+            new EnemyDecoratorFactory(p, baseComponent)
+                .generate(3)
+                .extend();
 
             yield return new WaitForSeconds(spawnRate);
         }
@@ -72,7 +68,6 @@ public class Spawner : MonoBehaviour
 
     private Vector2 randomSpawn(float outerSpawnMinX, float outerSpawnMinY, float outerSpawnMaxX, float outerSpawnMaxY)
     {
-        Vector2 vector;
         float x, y;
         // top/bottom (true) or left/right (false)
         if (Random.Range(0, 2) == 1)
