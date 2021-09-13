@@ -74,8 +74,6 @@ public class Playable : MonoBehaviour
 
     public void IncreaseCurrentXP(int xpGains)
     {
-        Debug.Log($"xpGains: {xpGains}, currentXP: {this.currentXP}, currentXPToLevel: {this.currentXPToLevel}");
-
         this.currentXP += xpGains;
 
         if (this.currentXP >= this.currentXPToLevel)
