@@ -6,7 +6,6 @@ public class WeaponCollider : MonoBehaviour
 {
     private bool isPlayer;
     private GameObject playerObject;
-    //private GameObject playerObject;
     
     // Start is called before the first frame update
     void Start()
@@ -15,11 +14,11 @@ public class WeaponCollider : MonoBehaviour
         playerObject = GameObject.Find(camera.GetComponent<CameraFollow>().playerId);
         if (playerObject != null && (transform.parent.gameObject.name == playerObject.gameObject.name))
         {
-            isPlayer = true;
+            this.isPlayer = true;
         }
         else
         {
-            isPlayer = false;
+            this.isPlayer = false;
         }
     }
 
@@ -31,35 +30,28 @@ public class WeaponCollider : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isPlayer)
-        {
-            Player player = playerObject.GetComponent<Player>();
-            Enemy enemy;
-            enemy = other.gameObject.GetComponent<Enemy>();
+        Player player = playerObject.GetComponent<Player>();
+        Enemy enemy = other.gameObject.GetComponent<Enemy>();
 
-            if ((player != null && enemy != null) && (player.size > enemy.size))
+        if (player == null || enemy == null)
+        {
+            return;
+        }
+
+        if (this.isPlayer)
+        {
+            if (player.size >= enemy.size)
             {
                 player.IncreaseCurrentXP(enemy.xpGains);
                 Destroy(other.gameObject);
-            } else if (false)
-            {
-                
             }
         }
         else
         {
-            Player player = playerObject.GetComponent<Player>();
-            Enemy enemy;
-            enemy = other.gameObject.GetComponent<Enemy>();
-
-            if ((player != null && enemy != null) && (player.size < enemy.size))
+            if (player.size <= enemy.size)
             {
                 enemy.IncreaseCurrentXP(enemy.xpGains);
                 Destroy(other.gameObject);
-            } else if (false)
-            {
-                
-                
             }
         }
     }
