@@ -10,10 +10,3 @@ On your way choose which upgrades best suit you.
 ![Craytion-1](https://user-images.githubusercontent.com/46799551/133226650-322df163-4fde-4ff5-a3b6-e140f7f832d2.png)
 ![Craytion-2](https://user-images.githubusercontent.com/46799551/133226665-f1e6fc88-f367-41fa-8075-97a1f847b530.png)
 ![Craytion-3](https://user-images.githubusercontent.com/46799551/133226679-605ecdba-573d-4891-af39-0926406e8081.png)
-
-<br>
-
-# Install instructions
-The project didn't build for the GameJam deadline, so version 0.1.0 is kept for reference, and only works in the Unity Editor.
-
-A patched version 0.1.1 with minor tweaks made after the deadline is also available.
