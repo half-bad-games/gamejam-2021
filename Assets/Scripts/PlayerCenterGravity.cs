@@ -19,8 +19,8 @@ public class PlayerCenterGravity : MonoBehaviour
 
             var comp = this.gameObject.GetComponent<Playable>();
 
-            var thrust = 30f * comp.stats.speed;
-            var torque = 10f * comp.stats.speed;
+            var thrust = comp.stats.size * Mathf.Pow(comp.stats.speed, 1.5f);
+            var torque = comp.stats.size * Mathf.Pow((comp.stats.speed / 3f), 1.5f);
 
             this.rb.AddForce(
                 new Vector2(Random.Range(-thrust, thrust), Random.Range(-thrust, thrust))
@@ -55,7 +55,7 @@ public class PlayerCenterGravity : MonoBehaviour
 
         if (this.isPlayer)
         {
-            if (player.size >= enemy.size)
+            if (player.stats.size >= enemy.stats.size)
             {
                 player.IncreaseCurrentXP(enemy.xpGains);
                 Destroy(other.gameObject);
@@ -63,7 +63,7 @@ public class PlayerCenterGravity : MonoBehaviour
         }
         else
         {
-            if (player.size <= enemy.size)
+            if (player.stats.size <= enemy.stats.size)
             {
                 enemy.IncreaseCurrentXP(enemy.xpGains);
                 Destroy(other.gameObject);

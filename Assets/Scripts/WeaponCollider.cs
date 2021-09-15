@@ -46,7 +46,7 @@ public class WeaponCollider : MonoBehaviour
 
         if (this.isPlayer)
         {
-            if (player.size >= enemy.size)
+            if (player.stats.size >= enemy.stats.size)
             {
                 player.IncreaseCurrentXP(enemy.xpGains);
                 Destroy(other.gameObject);
@@ -54,7 +54,7 @@ public class WeaponCollider : MonoBehaviour
         }
         else
         {
-            if (player.size <= enemy.size)
+            if (player.stats.size <= enemy.stats.size)
             {
                 enemy.IncreaseCurrentXP(enemy.xpGains);
                 Destroy(other.gameObject);

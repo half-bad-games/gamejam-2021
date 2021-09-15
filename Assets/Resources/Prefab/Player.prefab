@@ -104,13 +104,13 @@ MonoBehaviour:
     health: 10
     agility: 10
     vision: 10
-  size: 1
+    size: 1
   currentSP: 0
   camera: {fileID: 0}
-  movementSpeed: 110
   buyMenu: {fileID: 0}
   pause: {fileID: 0}
   ambientAudio: {fileID: 0}
+  SPText: {fileID: 0}
 --- !u!212 &6046055787083030427
 SpriteRenderer:
   m_ObjectHideFlags: 0

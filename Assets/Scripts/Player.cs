@@ -30,7 +30,7 @@ public class Player : Playable
         HandlePlayerMovement();
         // HandleStayInsideScreen();
 
-        if (camera.orthographicSize <= size * 10)
+        if (camera.orthographicSize <= this.stats.size * 10)
         {
             IncreaseCameraSize(camera.orthographicSize);
         }

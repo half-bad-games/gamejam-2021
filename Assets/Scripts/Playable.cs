@@ -10,12 +10,12 @@ public struct Stats
     public float health;
     public int agility;
     public int vision;
+    public int size;
 }
 
 public class Playable : MonoBehaviour
 {
     [SerializeField] public Stats stats;
-    [SerializeField] public int size;
     private int currentXPToLevel;
     private int currentXP;
     public int currentSP;
@@ -68,8 +68,8 @@ public class Playable : MonoBehaviour
 
     private void IncreaseSize()
     {
-        size++;
-        transform.localScale = new Vector3(size, size, size);
+        this.stats.size++;
+        transform.localScale = new Vector3(this.stats.size, this.stats.size, this.stats.size);
     }
 
     public void IncreaseCurrentXP(int xpGains)
