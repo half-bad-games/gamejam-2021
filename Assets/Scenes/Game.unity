@@ -2698,6 +2698,18 @@ PrefabInstance:
       propertyPath: ambientAudio
       value: 
       objectReference: {fileID: 142398509}
+    - target: {fileID: 6046055787083030427, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
+      propertyPath: m_Size.x
+      value: 6.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046055787083030427, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
+      propertyPath: m_Size.y
+      value: 15.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046055787083030427, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ffd1e04bf56ca941b8647eac91887bea, type: 3}
     - target: {fileID: 6046055787083030428, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
