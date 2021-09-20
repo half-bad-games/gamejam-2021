@@ -1,4 +1,4 @@
-# Craytion test
+# Craytion
 
 Start out as the smallest fish in the sea, and eat your way to the biggest.
 

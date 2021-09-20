@@ -63,7 +63,7 @@ class EyesDecorator : Decorator
 
     public override Playable add()
     {
-        this.currentComponent.stats.vision += 5;
+        this.currentComponent.stats.vision += 2;
         return this.currentComponent;
     }
 }
@@ -89,7 +89,7 @@ class ThirdEyeDecorator : Decorator
 
     public override Playable add()
     {
-        this.currentComponent.stats.vision += 10;
+        this.currentComponent.stats.vision += 3;
         return this.currentComponent;
     }
 }
