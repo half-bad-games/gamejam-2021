@@ -103,7 +103,7 @@ MonoBehaviour:
     damage: 10
     health: 10
     agility: 10
-    vision: 10
+    vision: 1
     size: 1
   currentSP: 0
   xpGains: 30

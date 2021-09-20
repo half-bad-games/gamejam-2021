@@ -2802,6 +2802,10 @@ PrefabInstance:
       propertyPath: ambientAudio
       value: 
       objectReference: {fileID: 142398509}
+    - target: {fileID: 6046055787083030424, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
+      propertyPath: stats.vision
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6046055787083030427, guid: 7dd56582057ba163da31b7dbfb8d1b23, type: 3}
       propertyPath: m_Size.x
       value: 6.71

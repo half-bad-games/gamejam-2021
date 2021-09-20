@@ -11,6 +11,7 @@ public class Player : Playable
     [SerializeField] public Text SPText;
 
     private PlayableAdapterComponent adapterComponent;
+    private Light light;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,8 @@ public class Player : Playable
 
         this.name = this.GetInstanceID().ToString();
         this.adapterComponent = new PlayableAdapterComponent(this.name);
+
+        this.light = GetComponent<Light>();
     }
 
     // Update is called once per frame
@@ -38,6 +41,11 @@ public class Player : Playable
         SPText.text = this.GetSp().ToString();
 
         HandleBuyMenu();
+
+        if (this.light)
+        {
+        
+        }
     }
 
     void HandleMouseInput()
