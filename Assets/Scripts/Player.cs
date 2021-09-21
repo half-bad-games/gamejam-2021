@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Vector3 = UnityEngine.Vector3;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Player : Playable
 {
@@ -11,7 +12,8 @@ public class Player : Playable
     [SerializeField] public Text SPText;
 
     private PlayableAdapterComponent adapterComponent;
-    private Light light;
+    private Light2D light;
+    private float pointLightOuterRadiusStart;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,8 @@ public class Player : Playable
         this.name = this.GetInstanceID().ToString();
         this.adapterComponent = new PlayableAdapterComponent(this.name);
 
-        this.light = GetComponent<Light>();
+        this.light = GetComponent<Light2D>();
+        this.pointLightOuterRadiusStart = this.light.pointLightOuterRadius;
     }
 
     // Update is called once per frame
@@ -41,11 +44,14 @@ public class Player : Playable
         SPText.text = this.GetSp().ToString();
 
         HandleBuyMenu();
+        HandleLight();
+    }
 
-        if (this.light)
-        {
-        
-        }
+    void HandleLight()
+    {
+        var lightSize = this.pointLightOuterRadiusStart * (camera.orthographicSize / 30f);
+        this.light.pointLightOuterRadius = lightSize + (lightSize * (this.stats.vision / 3f));
+        this.light.pointLightInnerRadius = this.light.pointLightOuterRadius - 2;
     }
 
     void HandleMouseInput()

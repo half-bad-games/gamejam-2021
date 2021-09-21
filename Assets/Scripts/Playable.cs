@@ -9,7 +9,7 @@ public struct Stats
     public int damage;
     public float health;
     public int agility;
-    public int vision;
+    public float vision;
     public int size;
 }
 
